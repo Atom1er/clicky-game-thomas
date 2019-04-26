@@ -11,7 +11,7 @@ function ImagesCard(props){
         src={props.image} 
         data-id={props.id}
         onClick = {()=> { props.onEcrement(props.id)}}
-        onShuffle
+        // onShuffle
         />
     </div>
     );

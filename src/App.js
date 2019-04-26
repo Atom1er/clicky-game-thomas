@@ -7,7 +7,7 @@ import './App.css';
 class App extends Component {
 
   state = {
-    ImagesDB,
+    images : ImagesDB,
     tested : [0],
     score: 0
 
@@ -22,15 +22,7 @@ class App extends Component {
     
     if(el ===  params ){ 
       passed = false;
-        // console.log('true ', this.state.tested);
     } 
-    // else if(el !=  params ) {
-    // //   var score = this.state.score;
-    // // score++; 
-    // // this.state.tested.push(params)
-    // //   this.setState({ score });
-    // }
-      // console.log('false ', this.state.tested);
 
     });
 
@@ -44,11 +36,21 @@ class App extends Component {
      else if(!passed){
       current_score = 0;
       tested = [0];
+      alert('Sorry You Failed! Try Again! :-(');
     }
 
     this.setState({ score:current_score });
     this.setState({ tested });
+    // Shuffle();
 
+    var imgdb = this.state.images;
+    var length = this.state.images.length;
+    for (let i = length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [imgdb[i], imgdb[j]] = [imgdb[j], imgdb[i]];
+    }
+    console.log(imgdb);
+    this.setState({ images:imgdb });
   }
 
 
@@ -60,13 +62,14 @@ class App extends Component {
           <span className="header-score">Score: {this.state.score}</span>
         </div>
         <div className='main-section'>
-          {this.state.ImagesDB.map( img => (
+          {this.state.images.map( img => (
             <ImagesCard
             id={img.id}
             key={img.id}
             image={img.image}
             name={img.name} 
             onEcrement={this.HandleClick}
+            // onShuffle={this.Shuffle}
             />
           ))}
         </div>
