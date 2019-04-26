@@ -1,0 +1,19 @@
+.image-card {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.image {
+  width: 150px;
+  height: 150px;
+  margin: 15px;
+  border: solid 2px white;
+  border-radius: 10px;
+}
+
+.image:hover {
+  cursor: pointer;
+  border: solid 2px red;
+}
+/*# sourceMappingURL=image.css.map */
